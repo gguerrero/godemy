@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"encoding/json"
 	"errors"
 	"log"
@@ -33,13 +34,16 @@ type JSONWebKeys struct {
 	X5c []string `json:"x5c"`
 }
 
-const issURI string = "https://gguerrero.auth0.com"
+const issURI string = "https://gguerrero.auth0.com/"
 
 func main() {
 	jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
 		ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
+			fmt.Println(token)
+			fmt.Printf("%+v\n", token)
+
 			// Verify 'aud' claim
-			aud := issURI + "/api/v2/"
+			aud := issURI + "api/v2/"
 			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
 			if !checkAud {
 				return token, errors.New("invalid audience")
@@ -74,7 +78,7 @@ func main() {
 
 func getPemCert(token *jwt.Token) (string, error) {
 	cert := ""
-	resp, err := http.Get(issURI + "/.well-known/jwks.json")
+	resp, err := http.Get(issURI + ".well-known/jwks.json")
 
 	if err != nil {
 		return cert, err
@@ -127,13 +131,15 @@ func routerApp(jwtMiddleware *jwtmiddleware.JWTMiddleware) *mux.Router {
 func responseJSON(message string, w http.ResponseWriter, statusCode int) {
 	response := Response{message}
 
-	jsonResponse, err := json.Marshal(response)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	// jsonResponse, err := json.Marshal(response)
+	encoder := json.NewEncoder(w)
+	// if err != nil {
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// 	return
+	// }
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
-	w.Write(jsonResponse)
+	encoder.Encode(&response)
+	// w.Write(encoder)
 }
