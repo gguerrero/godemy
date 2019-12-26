@@ -7,7 +7,7 @@ import (
 
 func main() {
 	f := createFunc()
-	runFunctionWithParams(f, "Guillermo", "Guerrero", "Bustamante")
+	runFunctionWithParams(f, "Guillermo", "G", "B")
 }
 
 func createFunc() func(...string) {

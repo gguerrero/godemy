@@ -9,5 +9,5 @@ func main() {
 		fmt.Printf("Hello %v, from anounymous func!\n", s)
 	}
 
-	f("Guillermo Guerrero")
+	f("Guillermo GB")
 }

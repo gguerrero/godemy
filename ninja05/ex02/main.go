@@ -4,27 +4,27 @@ import (
 	"fmt"
 )
 
-type Person struct{
-	Name 		     string
-	Lastname 		 string
+type Person struct {
+	Name         string
+	Lastname     string
 	FavIceCreams []string
 }
 
 func main() {
 	me := Person{
-		Name: "Guillermo",
-		Lastname: "Guerrero",
+		Name:         "Guillermo",
+		Lastname:     "G",
 		FavIceCreams: []string{"Chocolate", "Vanilla"},
 	}
 
 	nayri := Person{
-		Name: "Nayri",
-		Lastname: "Bredos",
+		Name:         "Nayri",
+		Lastname:     "B",
 		FavIceCreams: []string{"Vanilla", "Strawberry"},
 	}
 
 	persons := map[string]Person{
-		me.Lastname: me,
+		me.Lastname:    me,
 		nayri.Lastname: nayri,
 	}
 

@@ -7,7 +7,7 @@ import (
 func main() {
 	f := createFunc()
 
-	f("Guillermo Guerrero")
+	f("Guillermo GB")
 }
 
 func createFunc() func(string) {

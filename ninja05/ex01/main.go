@@ -4,16 +4,16 @@ import (
 	"fmt"
 )
 
-type Person struct{
-	Name 		     string
-	Lastname 		 string
+type Person struct {
+	Name         string
+	Lastname     string
 	FavIceCreams []string
 }
 
 func main() {
 	me := Person{
-		Name: "Guillermo",
-		Lastname: "Guerrero",
+		Name:         "Guillermo",
+		Lastname:     "GB",
 		FavIceCreams: []string{"Chocolate", "Vanilla"},
 	}
 
