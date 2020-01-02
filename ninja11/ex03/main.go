@@ -24,10 +24,10 @@ func main() {
 		Source:   "ICE",
 	}
 
-	thoughError(price)
+	throwError(price)
 }
 
-func thoughError(err error) {
+func throwError(err error) {
 	fmt.Println("---------------------")
 	fmt.Println(err)
 	fmt.Println(err.(Price).Value)
