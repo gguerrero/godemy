@@ -6,5 +6,5 @@ const humanAgeRatio int = 7
 //
 // Note: Don't input a negative number or you'll have a problem!
 func Years(humanYears int) int {
-  return humanYears * humanAgeRatio
+	return humanYears * humanAgeRatio
 }

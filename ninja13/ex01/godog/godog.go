@@ -1,4 +1,4 @@
-// Package dog allows us to more fully understand dogs.
+// Package godog allows us to more fully understand dogs.
 package godog
 
 // ToDogYears converts human years to dog years.
